@@ -1,1 +1,1 @@
-# BlazorUniversityRepo
+# Blazor University
