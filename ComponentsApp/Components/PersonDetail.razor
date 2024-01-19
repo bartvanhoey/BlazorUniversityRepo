@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-4">To HTML attribute using .ToString()</div>
+    <div class="col-8"><input readonly value=@MyPerson /></div>
+</div>
+
+@code {
+    private Person MyPerson;
+
+    protected override void OnInitialized()
+    {
+        MyPerson = new Person{
+            Salutation ="Mr.",
+            GivenName = "Peter", 
+            FamilyName = "Morris"
+        };
+    }
+
+
+}

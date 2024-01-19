@@ -1,0 +1,24 @@
+<div class="">
+    <h2>CurrentCounterValue in MyFirstComponent is @CurrentCounterValue</h2>
+</div>
+
+<button @onclick=UpdateCurrentCounterValue>Update</button>
+
+<br>
+<br>
+
+
+
+@code {
+    [Parameter]
+    public int CurrentCounterValue { get; set; }
+
+    [Parameter] public EventCallback<int> CurrentCounterValueChanged { get; set; }
+
+    async Task UpdateCurrentCounterValue()
+    {
+        CurrentCounterValue++;
+        await CurrentCounterValueChanged.InvokeAsync(CurrentCounterValue);
+    }
+
+}

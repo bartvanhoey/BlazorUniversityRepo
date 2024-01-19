@@ -1,0 +1,44 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<div @onclick="(e)=>H1Clicked(e)">Hello, world!</div>
+
+@InputSize
+<br>
+<br>
+
+<input value=@InputSize />
+<br>
+<br>
+<input value=@DouleInputSize() />
+<br>
+<br>
+<input value=@(InputSize * 3)/>
+<br>
+<br>
+<input value=@($"Size is {InputSize}")/>
+<br>
+<br>
+<input value=@($"Double Size is {DouleInputSize()}")/>
+
+<MyHeader IsVisible=@headerVisible Text="Hello World!" />
+
+
+
+@code {
+
+    public void H1Clicked(MouseEventArgs eventArgs)
+    {
+      Console.WriteLine("H1 Clicked");
+    }
+
+    private int InputSize = 8;
+    bool headerVisible = true;
+
+    string HeaderText = "Value of variable";
+
+    private int DouleInputSize() => InputSize * 2;
+
+}
+

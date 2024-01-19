@@ -1,0 +1,50 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<br>
+
+<MyFirstComponent @bind-CurrentCounterValue="currentCount"/>
+
+<br>
+<br>
+
+<MySecondComponent CurrentCounterValue=@currentCount/>
+
+<br>
+<br>
+
+<PersonDetail />
+
+<br>
+<br>
+
+<PersonView Person=@MyPerson/>
+
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+     private Person MyPerson;
+
+    protected override void OnInitialized()
+    {
+        MyPerson = new Person{
+            Salutation ="Mr.",
+            GivenName = "Peter", 
+            FamilyName = "Morris"
+        };
+    }
+}
