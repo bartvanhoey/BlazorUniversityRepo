@@ -1,0 +1,30 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<TabControl>
+    @* <TabTextTemplate>
+        <img src="/images/tab.png" /> @context.Text
+    </TabTextTemplate> *@
+
+    @* if context conflicts with another identifier in your component *@
+    <TabTextTemplate Context="TheTab">
+        <img src="/images/tab.png" /> @TheTab.Text
+    </TabTextTemplate>
+    
+    <ChildContent>
+        <TabPage Text="Tab1">
+            <h1>This is TabPage 1</h1>
+            This is TabPage 1
+        </TabPage>
+        <TabPage Text="Tab2">
+            <h1>This is TabPage 2</h1>
+            This is TabPage 2
+        </TabPage>
+        <TabPage Text="Tab3">
+            <h1>This is TabPage 3</h1>
+            This is TabPage 3
+        </TabPage>
+    </ChildContent>
+
+</TabControl>
