@@ -1,33 +1,34 @@
 <div class="btn-group" role="group">
-    @foreach(var tabPage in Pages)
+    @foreach (var tabPage in TabPages)
     {
-        <button type="button" class="btn @GetButtonClass(tabPage)" @onclick="@(()=> ActivatePage(tabPage))" >
-            @tabPage.Text
-        </button>
+            <button type="button" class="btn @GetButtonClass(tabPage)" 
+            @onclick="@(()=> ActivateTabPage(tabPage))">
+                @tabPage.Text
+            </button>
     }
 </div>
+
 
 <CascadingValue Value="this">
     @ChildContent
 </CascadingValue>
 
-
 @code {
     [Parameter] public RenderFragment? ChildContent { get; set; }
+    List<TabPage> TabPages = new List<TabPage>();
+    public TabPage? ActiveTabPage { get; set; }
 
-    List<TabPage> Pages = new List<TabPage>();
-
-    public TabPage? ActivePage { get; set; }
 
     internal void AddPage(TabPage tabPage)
     {
-        Pages.Add(tabPage);
-        if (Pages.Count() == 1) ActivePage = tabPage;
+        TabPages.Add(tabPage);
+        if (TabPages.Count == 1) ActiveTabPage = tabPage;
         StateHasChanged();
     }
 
-    void ActivatePage(TabPage tabPage) => ActivePage = tabPage;
+    string GetButtonClass(TabPage tabPage) 
+        => tabPage == ActiveTabPage ? "btn-primary" : "btn-secondary";
 
-    string GetButtonClass(TabPage page) 
-        => page == ActivePage ? "btn-primary" : "btn-secondary";
+    void ActivateTabPage(TabPage tabPage) => ActiveTabPage = tabPage;
+
 }

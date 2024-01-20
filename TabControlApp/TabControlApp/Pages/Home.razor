@@ -3,6 +3,23 @@
 <PageTitle>Home</PageTitle>
 
 <TabControl>
+    <TabPage Text="Tab1">
+        <h1>This is TabPage 1</h1>
+        This is TabPage 1
+    </TabPage>
+    <TabPage Text="Tab2">
+        <h1>This is TabPage 2</h1>
+        This is TabPage 2
+    </TabPage>
+    <TabPage Text="Tab3">
+        <h1>This is TabPage 3</h1>
+        This is TabPage 3
+    </TabPage>
+</TabControl>
+
+<hr>
+
+<TabControl>
     @foreach (var auto in Autos)
     {
         <TabPage Text="@auto.Name">
