@@ -3,14 +3,46 @@
 <PageTitle>Home</PageTitle>
 
 <TabControl>
-    <TabPage Text="Tab 1">
-        <h1>The first tab</h1>
-        <span>hellokes</span>
-    </TabPage>
-    <TabPage Text="Tab 2">
-        <h1>The second tab</h1>
-    </TabPage>
-    <TabPage Text="Tab 3">
-        <h1>The third tab</h1>
-    </TabPage>
+    @foreach (var auto in Autos)
+    {
+        <TabPage Text="@auto.Name">
+            <h1>@auto.Name has @auto.NumberOfDoors doors</h1>
+        </TabPage>
+    }
 </TabControl>
+
+@code {
+    List<Auto> Autos = new List<Auto>();
+
+    protected override void OnInitialized()
+    {
+        Autos.Add(new Auto("Audi", 5, true, 100));
+        Autos.Add(new Auto("Golf", 4, false, 100));
+        Autos.Add(new Auto("Polo", 3, true, 100));
+        Autos.Add(new Auto("Tiguan", 5, true, 100));
+    }
+
+
+    public class Auto
+    {
+
+        public string? Name { get; set; }
+
+        public Auto(string name, int numberOfDoors, bool isVisible, int quantity = 0)
+        {
+            Name = name;
+            NumberOfDoors = numberOfDoors;
+            IsVisible = isVisible;
+            Quantity = quantity;
+        }
+
+        public int NumberOfDoors { get; set; }
+        public bool IsVisible { get; set; } = false;
+
+        public int Quantity { get; set; }
+    }
+
+    public int Quantity { get; set; }
+}
+
+
