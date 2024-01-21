@@ -1,0 +1,23 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<DataList Data="@People">
+    @context.Salutation @context.FamilyName @context.GivenName
+</DataList>
+
+
+@code {
+    private IEnumerable<Person>? People;
+
+    protected override void OnInitialized()
+    {
+        People = new Person[]{
+new Person { Salutation = "Mr", GivenName = "Bob", FamilyName = "Geldof" },
+new Person { Salutation = "Mrs", GivenName = "Angela", FamilyName = "Rippon" },
+new Person { Salutation = "Mr", GivenName = "Freddie", FamilyName = "Mercury" }
+};
+    }
+
+
+}
