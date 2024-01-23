@@ -1,0 +1,40 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<DataList Data=@People>
+   <ItemTemplate Context="person">
+    <li @key=person>
+      @person.Salutation @person.FamilyName, @person.GivenName
+    </li>
+  </ItemTemplate>
+</DataList>
+
+<DataList Data=@People>
+  <ListTemplate Context="allPeople">
+    <ul Type="A">
+      @allPeople
+    </ul>
+  </ListTemplate>
+  <ItemTemplate Context="person">
+    <li @key=person>
+      @person.Salutation @person.FamilyName, @person.GivenName
+    </li>
+  </ItemTemplate>
+</DataList>
+
+
+@code
+{
+  private IEnumerable<Person>? People;
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    People = new Person[]
+    {
+      new Person { Salutation = "Mr", GivenName = "Bob", FamilyName = "Geldof" },
+      new Person { Salutation = "Mrs", GivenName = "Angela", FamilyName = "Rippon" },
+      new Person { Salutation = "Mr", GivenName = "Freddie", FamilyName = "Mercury" }
+    };
+  }
+}

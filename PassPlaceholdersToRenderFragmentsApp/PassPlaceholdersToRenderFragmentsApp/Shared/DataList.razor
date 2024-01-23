@@ -1,0 +1,25 @@
+@typeparam TItem
+
+<div class="paged-data-list">
+    <div class="paged-data-list_header">
+        @Data.Count() item(s)
+    </div>
+    <div class="paged-data-list_body">
+
+        @foreach (var item in Data ?? Array.Empty<TItem>())
+        {
+            @ItemTemplate(item)
+        }
+
+
+    </div>
+    <div class="paged-data-list_footer">
+        <button type="button" etc>Prev</button>
+        <button type="button" etc>Next</button>
+    </div>
+</div>
+
+@code {
+    [Parameter] public IEnumerable<TItem>? Data { get; set; }
+    [Parameter] public RenderFragment<TItem>? ItemTemplate { get; set; }
+}
